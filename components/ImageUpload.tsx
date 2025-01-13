@@ -77,7 +77,7 @@ const ImageUpload = ({onFileChange}: {onFileChange : (filePath: string) => void}
             onClick={(e) =>{
                 e.preventDefault();
                 if(ikUploadRef.current){
-                    //@ts-ignore
+                    //@ts-expect-error I dont really know why i have to do this
                     ikUploadRef.current?.click();
                 }
             }}
