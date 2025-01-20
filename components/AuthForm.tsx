@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants"
-import ImageUpload from "./ImageUpload"
+import FileUpload from "./FileUpload"
 import { toast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation";
 
@@ -79,7 +79,15 @@ const AuthForm = <T extends FieldValues>({
                     <FormItem>
                       <FormLabel className = "capitalize">{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                       <FormControl>
-                        {field.name === "universityCard" ? <ImageUpload onFileChange = {field.onChange}/> : 
+                        {field.name === "universityCard" ? 
+                          <FileUpload 
+                            type = "image"
+                            accept="image/*"
+                            placeholder="Upload your ID"
+                            folder="ids"
+                            variant="dark"
+                            onFileChange = {field.onChange}
+                          /> : 
                           <Input 
                             required 
                             type={FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]} 
